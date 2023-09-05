@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: sirapob
@@ -24,13 +25,15 @@
                     <td>Credit</td>
                     <td>Select</td>
                 </tr>
-                <tr>
-                    <td>No</td>
-                    <td>Subject Code</td>
-                    <td>Title</td>
-                    <td>Credit</td>
-                    <td>Select</td>
-                </tr>
+                <c:forEach items="${subjects}" var="subject" varStatus="vs">
+                    <tr>
+                        <td>${vs.count}</td>
+                        <td>${subject.id}</td>
+                        <td>${subject.title}</td>
+                        <td>${subject.credit}</td>
+                        <td><input type="checkbox" value=${subject.id} name="subjects"></td>
+                    </tr>
+                </c:forEach>
             </table>
         </div>
     </div>
