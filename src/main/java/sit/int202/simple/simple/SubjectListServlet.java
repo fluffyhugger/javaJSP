@@ -12,6 +12,18 @@ import java.util.List;
 
 @WebServlet(name = "SubjectListServlet", value = "/subjects")
 public class SubjectListServlet extends HttpServlet {
+    private long startTime;
+
+    @Override
+    public void destroy() {
+        System.out.println("Duration of " + this.getServletInfo() + " is " + (System.currentTimeMillis() - startTime + " Milli seconds"));
+    }
+    @Override
+    public void init() throws ServletException {
+        startTime = System.currentTimeMillis();
+    }
+
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         SubjectRepository sr = new SubjectRepository();
